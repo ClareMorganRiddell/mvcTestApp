@@ -43,21 +43,20 @@ namespace Vidly.Controllers
 
         public ActionResult AllMovies()
         {
-            var movies = new List<Movie>
+            var movies = GetMovies();
+            return View(movies);
+
+        }
+
+        private IEnumerable<Movie> GetMovies()
+        {
+            return new List<Movie>
             {
                 new Movie { Name = "True Romance" },
                 new Movie { Name = "Willow" },
                 new Movie { Name = "Princess Bride" },
                 new Movie { Name = "Your Royal Highness" }
             };
-
-            var viewModel = new MovieViewModel
-            {
-                Movies = movies
-            };
-
-            return View(viewModel);
-
         }
     }
 }
